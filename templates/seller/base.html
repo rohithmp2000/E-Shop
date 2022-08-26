@@ -11,7 +11,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Vaccination Management System</title>
+    <title>Seller Profile</title>
     <meta name="description" content="Ela Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -46,9 +46,14 @@
         <div id="main-menu" class="main-menu collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li class="active">
-                    <a href="{% url 'seller_home' %}"><i class="menu-icon fa fa-laptop"></i>Dashboard </a>
+                    <a href="{% url 'seller_home' %}"><i class="menu-icon fa fa-laptop"></i>Manage Inventory </a>
                 </li>
-                
+                <li class="active">
+                    <a href="{% url 'seller_acceptorder' %}"><i class="menu-icon fa fa-laptop"></i>Accept Order</a>
+                </li>
+                <li class="active">
+                    <a href="{% url 'seller_addproduct' %}"><i class="menu-icon fa fa-laptop"></i>Add Product</a>
+                </li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </nav>
@@ -60,7 +65,7 @@
     <header id="header" class="header">
         <div class="top-left">
             <div class="navbar-header">
-                <a class="navbar-brand" href="{% url 'seller_home' %}">Vaccination Management</a>
+                <a class="navbar-brand" href="{% url 'seller_home' %}">DASHBOARD</a>
 
                 <a id="menuToggle" class="menutoggle"><i class="fa fa-bars"></i></a>
             </div>
@@ -100,21 +105,22 @@
                 <div class="col-sm-4">
                     <div class="page-header float-left">
                         <div class="page-title">
-                            <h1>Dashboard</h1>
+                            <h1>Manage Inventory</h1>
                         </div>
                     </div>
                 </div>
+                {% block content1 %}
                 <div class="col-sm-8">
                     <div class="page-header float-right">
                         <div class="page-title">
                             <ol class="breadcrumb text-right">
                                 <li><a href="{% url 'seller_home' %}">Home</a></li>
-                                <li><a href="{% url 'seller_home' %}">Dashboard</a></li>
-
+                                <li><a href="{% url 'seller_home' %}">Manage Inventory</a></li>
                             </ol>
                         </div>
                     </div>
                 </div>
+                {% endblock %}
             </div>
         </div>
     </div>
@@ -135,7 +141,7 @@
         <div class="footer-inner bg-white ">
             <div class="row">
                 <div class="col-sm-12" style="text-align:center;">
-                    Copyright &copy; 2021 Vaccination Management System
+                    Copyright &copy; BROTHAS E-Shopping Website 2021
                 </div>
 
             </div>

@@ -1,5 +1,7 @@
+from itertools import product
 from django.contrib import messages
 from django.shortcuts import render, redirect
+from .models import Products
 
 # from shopapp.filters import VaccineFilter, UserFilter, HospitalFilter, ScheduleFilter
 from shopapp.forms import SellerRegister, UserRegister
@@ -11,8 +13,51 @@ from django.contrib.auth.decorators import login_required
 
 @login_required(login_url='login_view')
 def seller_home(request):
-    return render(request, 'seller/home.html')
+    currentuser = request.user
+    # print (currentuser)
+    # print (currentuser.id)
+    sellerid = Seller.objects.get(user_id=currentuser.id)
+    items = Products.objects.filter(product_seller_id=sellerid.id)
+    # print (sellerid.id)
+    return render(request, 'seller/home.html',{'items':items })
 
+@login_required(login_url='login_view')
+def seller_acceptorder(request):
+    return render(request, 'seller/acceptorder.html')
+
+@login_required(login_url='login_view')
+def seller_addproduct(request):
+    # if request.method == 'POST':
+    #     data = Products()
+    #     data.product_name=request.POST.get('product_name')
+    #     data.stock=request.POST.get('stock')
+    #     data.image=request.POST.get('photo')
+    #     data.price=request.POST.get('price')
+    #     currentuser = request.user
+    #     sellerid = Seller.objects.get(user_id=currentuser.id)
+    #     data.product_seller = sellerid.id
+    #     data.save()
+    # else :
+        return render(request, 'seller/addproduct.html')
+
+def addproduct(request):
+    if request.method == 'POST':
+        data = Products()
+        data.product_name=request.POST.get('product_name')
+        data.stock=request.POST.get('stock')
+        data.image=request.POST.get('photo')
+        data.price=request.POST.get('price')
+        currentuser = request.user
+        sellerid = Seller.objects.get(user_id=currentuser.id)
+        data.product_seller = sellerid
+        data.save()
+        return render(request, 'seller/addproduct.html')
+
+def removeproduct(request,id):  
+    items = Products.objects.get(id=id) 
+    print (id)
+    items.delete()
+    return redirect('seller_home')
 
 # @login_required(login_url='login_view')
 # def vaccine_nurse(request):

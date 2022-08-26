@@ -1,0 +1,61 @@
+{% extends 'seller/base.html' %}
+{% block content1 %}
+<div class="col-sm-8">
+    <div class="page-header float-right">
+        <div class="page-title">
+            <ol class="breadcrumb text-right">
+                <li><a href="{% url 'seller_home' %}">Home</a></li>
+                <li><a href="{% url 'seller_acceptorder' %}">Accept Order</a></li>
+            </ol>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block content %}
+
+
+    <div class="col-lg-6 col-md-6" >
+        <div class="card">
+            <div class="card-body">
+                <div class="stat-widget-five">
+                    <div class="stat-icon dib flat-color-1">
+                    <!-- can add profile pic if needed -->
+                    </div>
+                    <!-- <div class="stat-content"> -->
+                        <div class="text-left dib">
+                            <div class="stat-text">Welcome</div>
+                            <div class="stat-heading">{{request.user}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ------ -->
+
+    <!-- ------ -->
+    <div class="stat-content">
+        <div class="card">
+            <div class="card-body">
+                <table class=" col-lg-12 col-md-12 flat-color-0">
+                    <tr>
+                        <th>Product Name</th>
+                        <th>Stock</th>
+                        <th>Image</th>
+                        <th>Price</th>
+                        <th>Edit</th>
+                    </tr>
+                    {% for i in items %}  
+                    <tr>
+                        <td>{{ i.product_name}}</td>    
+                        <td>{{i.stock}}</td>
+                        <td><div style="flex:2"><img class="row-image" style="height:50px; width:65px;" src="{{i.image.url}}"></div></td>    
+                        <td>{{i.price}}</td>
+                        <td></td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

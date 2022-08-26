@@ -1,0 +1,33 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+     <div class="row">
+		<div class="col-lg-6">
+			<div class="box-element" id="form-wrapper">
+				<form id="form">
+					<div id="shipping-info">
+						<p><h4>Select Payment Option :</h4></p>
+						<hr>
+						<table>
+                            <tr>
+                                <td><input type="radio" name="1"> </td>
+                                <td>UPI Payment</td>
+                            </tr>
+                            <tr>
+                                <td><input type="radio" name="1"></td>
+                                <td>Debit / Credit Card</td>
+                            </tr>
+                            <tr>
+                                <td><input type="radio" name="1"></td>
+                                <td>Cash On Delivery</td>
+                            </tr>
+                        </table>                        
+					</div>
+
+					<hr>
+					<input id="form-button" class="btn btn-success btn-block" type="submit" value="Continue Payment">
+				</form>
+			</div>
+		</div>
+	</div>
+{% endblock content %}

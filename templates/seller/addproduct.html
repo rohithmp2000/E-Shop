@@ -1,0 +1,62 @@
+{% extends 'seller/base.html' %}
+{% block content1 %}
+<div class="col-sm-8">
+    <div class="page-header float-right">
+        <div class="page-title">
+            <ol class="breadcrumb text-right">
+                <li><a href="{% url 'seller_home' %}">Home</a></li>
+                <li><a href="{% url 'seller_addproduct' %}">Add Product</a></li>
+            </ol>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block content %}
+
+
+    <div class="col-lg-6 col-md-6" >
+        <div class="card">
+            <div class="card-body">
+                <div class="stat-widget-five">
+                    <div class="stat-icon dib flat-color-1">
+                    <!-- can add profile pic if needed -->
+                    </div>
+                    <!-- <div class="stat-content"> -->
+                        <div class="text-left dib">
+                            <div class="stat-text">Welcome</div>
+                            <div class="stat-heading">{{request.user}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ------ -->
+
+    <!-- ------ -->
+    <div class="stat-content">
+        <div class="card">
+            <div class="card-body">
+                <form method="post" action="{% url 'added' %}">
+                    {% csrf_token %}
+                    <table class=" col-lg-12 col-md-12 flat-color-0">
+                        <tr>
+                            <th>Product Name</th>
+                            <th>Stock</th>
+                            <th>Image</th>
+                            <th>Price</th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <td><input type="text" name="product_name" placeholder="Enter your product name" required></td>    
+                            <td><input type="number" name="stock" placeholder="Enter number of Stock" required></td>
+                            <td><input type="file" name="photo" required></td>    
+                            <td><input type="number" name="price" placeholder="Price" required></td>
+                            <td><input type="submit" value="  SAVE  "></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

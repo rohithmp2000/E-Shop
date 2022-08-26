@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.urls import path
 
-from shopapp import  views, seller_view
+from shopapp import  views, seller_view, user_view
 
 urlpatterns = [
     path('', views.home, name='home'),
@@ -39,9 +39,11 @@ urlpatterns = [
     # path('report_card/', admin_views.report_card, name='report_card'),
 
 
-    path('seller_hourme/', seller_view.seller_home, name='seller_home'),
-    # path('vaccine_nurse/', nurse_views.vaccine_nurse, name='vaccine_nurse'),
-    # path('users_nurse/', nurse_views.users_nurse, name='users_nurse'),
+    path('seller_home/', seller_view.seller_home, name='seller_home'),
+    path('seller_acceptorder/', seller_view.seller_acceptorder, name='seller_acceptorder'),
+    path('seller_addproduct/', seller_view.seller_addproduct, name='seller_addproduct'),
+    path('added/', seller_view.addproduct, name='added'),
+    path('remove/<int:id>',seller_view.removeproduct, name="removeproduct"),
     # path('hospital_nurse/', nurse_views.hospital_nurse, name='hospital_nurse'),
     # path('schedule_add/', nurse_views.schedule_add, name='schedule_add'),
     # path('schedule/', nurse_views.schedule, name='schedule'),
@@ -54,7 +56,7 @@ urlpatterns = [
     # path('mark_vaccinated/<int:id>/', nurse_views.mark_vaccinated, name='mark_vaccinated'),
 
 
-    # path('user_home/', user_views.user_home, name='user_home'),
+    path('user_home/', user_view.user_home, name='user_home'),
     # path('schedule_user/', user_views.schedule_user, name='schedule_user'),
     # path('take_appointment/<int:id>/', user_views.take_appointment, name='take_appointment'),
     # path('appointments/', user_views.appointments, name='appointments'),
@@ -64,7 +66,12 @@ urlpatterns = [
     # path('profile_update/<int:user_id>/', user_views.profile_update, name='profile_update'),
     # path('reportcard_user/', user_views.reportcard_user, name='reportcard_user'),
 
-
+    path('store/', views.store, name="store"),
+	path('cart/', views.cart, name="cart"),
+	path('checkout/', views.checkout, name="checkout"),
+	path('update_item/', views.updateItem, name="update_item"),
+	path('process_order/', views.processOrder, name="process_order"),
+	path('payment/', views.payment, name="payment"),
 ]
 
 

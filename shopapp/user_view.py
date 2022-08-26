@@ -1,7 +1,7 @@
 from django.contrib import messages
 from django.shortcuts import render, redirect
 # from shopapp.filters import ScheduleFilter
-from shopapp.forms import ComplaintForm, UserRegister, UserProfileUpdate
+from shopapp.forms import UserRegister
 from shopapp.models import Seller, User
 # , Hospital, Vaccine, VaccinationSchedule, Complaint, Appointment, \
 #     ReportCard
@@ -10,7 +10,8 @@ from django.contrib.auth.decorators import login_required
 
 @login_required(login_url='login_view')
 def user_home(request):
-    return render(request, 'usertemplates/home.html')
+    return redirect('store')
+    # return render(request, 'store/store.html')
 
 
 # @login_required(login_url='login_view')
